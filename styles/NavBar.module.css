@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #0071f3bb;;
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    transition-duration: 5ms;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.left{
+    
+}
+.center{
+    font-weight: bold;
+}
+.right{
+    display: flex;
+}
+.right button {
+    background: white;
+    border: none;
+    border-radius: 10px;
+    font-size: x-large;
+}
