@@ -1,7 +1,9 @@
-export default function Home() {
+import Categories from "../components/categories"
+import styles from "../styles/Home.module.css"
+export default function Home({post}) {
   return (
-    <div>
-      Home
-    </div>
+    <div className={styles.main}>
+      <Categories/>
+  </div>
   )
 }
