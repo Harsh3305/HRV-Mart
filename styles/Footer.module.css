@@ -1,0 +1,27 @@
+.background {
+    background-color: #0070f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 10vh;
+    border-radius: 5px;
+}
+.title {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.lower {
+    font-size: large;
+    width: 90%;
+    color: white;
+    text-align: right;
+}
+.lower a {
+    font-size: x-large;
+    font-weight: bold;
+    font-style: italic;
+}
+.lower a:hover {
+    text-decoration: underline;
+}
