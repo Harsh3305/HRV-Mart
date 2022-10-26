@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     })
     .catch(function (error) {
         // console.log(error);
-        res.status(500).json({error: "Something went wrong!!"})
+        res.status(500).json({error: error})
         
     });
 
