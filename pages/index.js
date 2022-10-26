@@ -4,22 +4,24 @@ import absoluteUrl from 'next-absolute-url'
 
 export default function Home({categories}) {
   console.log(categories)
+  const { origin } = absoluteUrl(req)
   return (
     <div className={styles.main}>
-      {Categories(categories)}
+      {/* {Categories(categories)} */}
+      {origin}
   </div>
   )
 }
 
-export async function getServerSideProps() {
-  const { origin } = absoluteUrl(req)
-  const res = await fetch(`${origin}/api/categories`)
-  const posts = await res.json()
-  const categories = posts.categories;
-  // console.log(categories)
-  return {
-    props: {
-      categories
-    },
-  }
-}
+// export async function getServerSideProps() {
+//   const { origin } = absoluteUrl(req)
+//   const res = await fetch(`${origin}/api/categories`)
+//   const posts = await res.json()
+//   const categories = posts.categories;
+//   // console.log(categories)
+//   return {
+//     props: {
+//       categories
+//     },
+//   }
+// }
