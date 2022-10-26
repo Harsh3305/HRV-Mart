@@ -5,12 +5,11 @@ export default function Home({categories}) {
   return (
     <div className={styles.main}>
       {Categories(categories)}
-      {/* <h1>reoihgoeir</h1> */}
   </div>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch('http://localhost:3000/api/categories')
   const posts = await res.json()
   const categories = posts.categories;
