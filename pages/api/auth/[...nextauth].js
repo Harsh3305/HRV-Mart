@@ -31,5 +31,6 @@ export default NextAuth ({
       async jwt({ token, user, account, profile, isNewUser }) {
         return token
       },
-    }
+    },
+    secret: process.env.SECRET
 })
