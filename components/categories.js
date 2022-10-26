@@ -6,7 +6,7 @@ export default function Categories( categories) {
             <div className={styles.categories}>
                 {
                     categories.map(category => (
-                        <div className={styles.category}>
+                        <div className={styles.category} key={category}>
                             {category}
                         </div>
                     ))
