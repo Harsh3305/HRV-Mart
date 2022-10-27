@@ -1,13 +1,17 @@
+import Link from "next/link";
 import styles from "../styles/Categories.module.css"
-export default function Categories( categories) {
-    console.log(categories.length);
+export default function Categories(categories) {
     return (
         <div className={styles.main}>
             <div className={styles.categories}>
                 {
                     categories.map(category => (
-                        <div className={styles.category} key={category}>
-                            {category}
+                        <div key={category}>
+                            <Link href={`/category/${category}`}>
+                                <a className={styles.category} >
+                                    {category}
+                                </a>
+                            </Link>
                         </div>
                     ))
                 }
@@ -15,17 +19,3 @@ export default function Categories( categories) {
         </div>
     )
 }
-// export async function getStaticProps() {
-//     console.log("in categories");
-//     const res = await fetch('/api/categories')
-//     const posts = await res.json()
-//     console.warn(posts)
-//     const categories = posts.categories;
-
-//     return {
-//       props: {
-//         categories
-//       },
-//     }
-// }
-  
