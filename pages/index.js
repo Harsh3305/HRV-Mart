@@ -2,7 +2,6 @@ import Categories from "../components/categories"
 import styles from "../styles/Home.module.css"
 
 export default function Home({categories}) {
-  console.log(categories)
   return (
     <div className={styles.main}>
       {Categories(categories)}

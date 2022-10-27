@@ -43,9 +43,7 @@ export default NextAuth({
         .catch(function (error) {
           console.log(error);
         });
-      // console.log("Loged in");
       return true;
-      // }
     },
     async redirect({ url, baseUrl }) {
       return baseUrl

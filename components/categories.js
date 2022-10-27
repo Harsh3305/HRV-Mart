@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "../styles/Categories.module.css"
 export default function Categories(categories) {
-    console.log(categories.length);
     return (
         <div className={styles.main}>
             <div className={styles.categories}>
