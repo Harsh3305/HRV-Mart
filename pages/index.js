@@ -10,7 +10,7 @@ export default function Home({categories}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`${process.env.URL}/api/categories`)
   const posts = await res.json()
   const categories = posts.categories;
