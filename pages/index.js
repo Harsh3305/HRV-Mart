@@ -6,7 +6,10 @@ export default function Home({categories, products}) {
   console.log(products)
   return (
     <div className={styles.main}>
-      {/* {Categories(categories)} */}
+      {/*
+      * There is a bug in Categories. It is adding a scrollbar in home page.
+      */}
+      {Categories(categories)}
       <ProductSection title={"Recommended for You"} products={products}/>
       <ProductSection title={"Trending"} products={products}/>
       <ProductSection title={"Based on your Search History"} products={products}/>
