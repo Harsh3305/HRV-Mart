@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Router from "next/router";
 import styles from "../styles/ProductOverview.module.css";
 
 export default function ProductOverview({ product }) {
-    return <div className={styles.main} id={product.id}>
+    return <div className={styles.main} id={product.id} onClick={()=>(Router.push(`/product/${product.id}`))}>
         <div className={styles.title}>
             {product.title}
         </div>
