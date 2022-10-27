@@ -26,6 +26,12 @@ export async function getStaticProps() {
 }
 async function apiCall (path) {
   const res = await fetch(path)
-  const result = await res.json()
-  return result
+  try {
+    const result = await res.json();
+    return result;
+  }
+  catch (error) {
+    return [];
+  }
+  
 }
