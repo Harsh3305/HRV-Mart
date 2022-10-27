@@ -7,11 +7,13 @@ export default function Categories(categories) {
             <div className={styles.categories}>
                 {
                     categories.map(category => (
-                        <Link href={`/category/${category}`}>
-                            <a className={styles.category} key={category}>
-                                {category}
-                            </a>
-                        </Link>
+                        <div key={category}>
+                            <Link href={`/category/${category}`}>
+                                <a className={styles.category} >
+                                    {category}
+                                </a>
+                            </Link>
+                        </div>
                     ))
                 }
             </div>
