@@ -13,7 +13,7 @@ export default function Category({ products }) {
     <div className={styles.products}>
       {
         products.map(
-          product => (<ProductOverview product={product} />)
+          product => (<ProductOverview product={product} key={product.id}/>)
         )
       }
     </div>
