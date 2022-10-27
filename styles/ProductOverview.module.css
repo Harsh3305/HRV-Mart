@@ -8,6 +8,8 @@
     justify-content: space-evenly;
     border-radius: 10px;
     cursor: pointer;
+    max-width: 400px;
+    max-height: 600px;
 }
 .title {
     padding: 10px;
