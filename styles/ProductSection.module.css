@@ -1,0 +1,19 @@
+.title {
+    margin-top: 20px;
+    font-size: xx-large;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    border-radius: 20px;
+}
+.products{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+
+}
