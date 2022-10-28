@@ -11,8 +11,8 @@ export default function Home({categories, products}) {
       */}
       {Categories(categories)}
       <ProductSection title={"Recommended for You"} products={products}/>
-      <ProductSection title={"Trending"} products={products}/>
-      <ProductSection title={"Based on your Search History"} products={products}/>
+      {/* <ProductSection title={"Trending"} products={products}/>
+      <ProductSection title={"Based on your Search History"} products={products}/> */}
   </div>
   )
 }
