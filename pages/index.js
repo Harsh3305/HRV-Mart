@@ -3,7 +3,6 @@ import ProductSection from "../components/product_section";
 import styles from "../styles/Home.module.css"
 
 export default function Home({categories, products}) {
-  console.log(products)
   return (
     <div className={styles.main}>
       {/*
