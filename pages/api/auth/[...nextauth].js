@@ -19,30 +19,41 @@ export default NextAuth({
       const name = profile.name;
       const picture = profile.picture;
       const locale = profile.locale
+      
       /*
        * Use name, picture and locale when integrating data  
        */
       var data = JSON.stringify({
-        "username": "mor_2314",
-        "password": "83r5^_"
+        "email": profile.email,
+        "name": name,
+        "image": picture,
+        "address": [
+          "House Number",
+          "Line-1",
+          "Line-2",
+          "City",
+          "PinCode",
+          "Country"
+        ]
       });
-
+      
       var config = {
         method: 'post',
-        url: `${process.env.BACKEND_URL}/auth/login`,
-        headers: {
+        url: `${process.env.BACKEND_URL}/user/login`,
+        headers: { 
           'Content-Type': 'application/json'
         },
-        data: data
+        data : data
       };
-      var d ;
-      await axios(config)
-        .then(function (response) {
-          d = JSON.stringify(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      
+      axios(config)
+      .then(function (response) {
+        console.log("Loged in");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
       return true;
     },
     async redirect({ url, baseUrl }) {
