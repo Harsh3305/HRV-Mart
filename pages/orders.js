@@ -7,7 +7,7 @@ export default function Orders ({orders}) {
         {orders ? (
             <div className={styles.orders}>
                 {orders.map(order =>  (
-                    <Order order={order}/>
+                    <Order order={order} key={order.id}/>
                 ))}
             </div>
         ):(
