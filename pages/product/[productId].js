@@ -73,7 +73,6 @@ export default function Product({ product }) {
         })).json()
 
         const x = await response;
-        console.log(x)
 
     }
 }
