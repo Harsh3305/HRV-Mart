@@ -11,7 +11,7 @@ export default function Orders ({orders}) {
                 ))}
             </div>
         ):(
-            <div className={styles.no_order}>
+            <div className={styles.noOrder}>
                 No Orders
             </div>
         )}
