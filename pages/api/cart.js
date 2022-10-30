@@ -14,13 +14,11 @@ export default async function handler(req, res) {
     }
     else if (req.method == "PUT") {
         // update quantity of product in cart
-        console.log("in put")
         var data = JSON.stringify({
             "productId": req.body.productId,
             "quantity": req.body.quantity
         });
 
-        console.log(data)
 
         var config = {
             method: 'put',
