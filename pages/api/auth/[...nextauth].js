@@ -51,7 +51,7 @@ export default NextAuth({
         console.log("Loged in");
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
 
       return true;

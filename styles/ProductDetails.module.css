@@ -1,0 +1,28 @@
+.main {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+    transition-duration: 500ms;
+}
+.main:hover {
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+}
+.image {
+    flex: 2;
+}
+.name {
+    flex: 2;
+    margin: 20px;
+}
+.price {
+    color: red;
+}
+.quantity {
+    margin: 20px;
+}
