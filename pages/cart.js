@@ -10,7 +10,7 @@ export default function Cart({ cart }) {
                         cart.products.map(
                             product => (
                                 <ProductDetail 
-                                    id={product.productId}
+                                    key={product.productId}
                                     name={product.product.title}
                                     price={product.product.price}
                                     quantity={product.quantity}
