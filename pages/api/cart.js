@@ -5,7 +5,6 @@ export default async function handler(req, res) {
 
     const session = await getSession({ req });
     const email = session.user.email;
-    console.log(req.method)
     if (req.method == "GET") {
         // get cart of user
         fetch(`${process.env.BACKEND_URL}/cart/${email}`)
