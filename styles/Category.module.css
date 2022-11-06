@@ -1,3 +1,6 @@
+.main {
+    min-height: 100vh;
+}
 .title {
     background-color: #0070f3;
     margin-top: 20px;
