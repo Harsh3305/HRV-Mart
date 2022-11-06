@@ -2,7 +2,6 @@ import Order from "../components/order";
 import styles from "../styles/Orders.module.css";
 
 export default function Orders ({orders}) {
-    console.log(orders)
     return <div className={styles.main}>
         {orders ? (
             <div className={styles.orders}>
