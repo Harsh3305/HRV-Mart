@@ -6,7 +6,7 @@ export default function Category({ products }) {
   const router = useRouter()
   const { category } = router.query;
 
-  return <div>
+  return <div className={styles.main}>
     <div className={styles.title}>
       Category : {category}
     </div>
