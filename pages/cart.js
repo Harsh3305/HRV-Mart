@@ -53,7 +53,6 @@ export async function getServerSideProps({ req, res }) {
             },
         })
         var cart = await result.json()
-        console.log({cart: cart})
         for (const productQuantity in cart.products) {
             const productId = cart.products[productQuantity].productId
             const product = await fetch(`${process.env.URL}/api/product/${productId}`)
