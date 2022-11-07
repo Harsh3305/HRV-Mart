@@ -9,7 +9,17 @@ export default async function handler(req, res) {
         // get cart of user
         fetch(`${process.env.BACKEND_URL}/cart/${email}`)
             .then(res => res.json())
-            .then(json => res.status(200).json(json))
+            .then(
+                json => {
+                    fetch(`${process.env.BACKEND_URL}/cart/cost/${email}`)
+                    .then(costRes => costRes.json())
+                    .then(cost => {
+                        json.cost = cost;
+                        res.status(200).json(json)
+                    })
+                    .catch(costError => res.status(500).json(costError))
+                }
+            )
             .catch(error => res.status(500).json(error))
     }
     else if (req.method == "PUT") {
