@@ -36,3 +36,16 @@
     background-color: #0070f3;
     color: white;
 }
+.cost {
+    width: 100%;
+    align-items: center;
+    color: red;
+    font-size: x-large;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cost:hover {
+    text-decoration: underline;
+}
