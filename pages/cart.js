@@ -20,6 +20,12 @@ export default function Cart({ cart }) {
                             />)
                         )
                     }
+                    <div className={styles.cost}>
+                        <div></div>
+                        <div>
+                            Total cost: ₹ {cart.cost}
+                        </div>
+                    </div>
                     <button className={styles.order} onClick={()=> purchaseAllProductInCart()}>
                         Order now
                     </button>
