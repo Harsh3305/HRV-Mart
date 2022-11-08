@@ -52,10 +52,22 @@ export default function Product({ product }) {
         setCart(cart + 1)
     }
     function decrementCart(productId, cart, setCart) {
-        if (cart >= 1) {
+        if (cart == 1) {
+            deleteProductFromCart(productId)
+            setCart(cart - 1)
+        }
+        else if (cart > 1) {
             syncWithBackend(productId, cart-1)
             setCart(cart - 1)
         }
+    }
+    async function deleteProductFromCart (productId) {
+        const response = (await fetch(`/api/cart?productId=${productId}`, {
+            method: 'DELETE',
+        }))
+
+        console.log({response: response})
+        // const x = await response;
     }
     async function  syncWithBackend(productId, cart) {
         var data = JSON.stringify({
