@@ -72,17 +72,17 @@ export default async function handler(req, res) {
             });
 
     }
-    else if (req.methord == "DELETE") {
+    else if (req.method == "DELETE") {
         // empty whole cart of user
         const {productId} = req.query
         var url=""
         if (productId == null) {
             // empty whole cart of user
-            url = `${process.env.BACKEND_URL}/cart/${user_id}` 
+            url = `${process.env.BACKEND_URL}/cart/${email}` 
         }
         else {
             // remove product from cart
-            url = `${process.env.BACKEND_URL}/cart/${user_id}?productId=${productId}` 
+            url = `${process.env.BACKEND_URL}/cart/${email}?productId=${productId}` 
         }
         var config = {
             method: 'delete',
@@ -95,7 +95,7 @@ export default async function handler(req, res) {
             console.log(res.status(200).json(response.data));
           })
           .catch(function (error) {
-            res.status(500).send("Something went wrong")
+            res.status(500).json(error)
           });
     }
     else {
