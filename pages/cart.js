@@ -5,7 +5,7 @@ import styles from "../styles/Cart.module.css";
 export default function Cart({ cart }) {
     return <div className={styles.main}>
         {
-            cart  && cart.products.length  && cart.products.length  != 0? (
+            cart  && cart.products && cart.products.length  && cart.products.length  != 0? (
                 <div className={styles.notEmpty}>
                     {
                         cart.products.map(
