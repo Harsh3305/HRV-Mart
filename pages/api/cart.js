@@ -74,7 +74,29 @@ export default async function handler(req, res) {
     }
     else if (req.methord == "DELETE") {
         // empty whole cart of user
-        res.status(404).send("")
+        const {productId} = req.query
+        var url=""
+        if (productId == null) {
+            // empty whole cart of user
+            url = `${process.env.BACKEND_URL}/cart/${user_id}` 
+        }
+        else {
+            // remove product from cart
+            url = `${process.env.BACKEND_URL}/cart/${user_id}?productId=${productId}` 
+        }
+        var config = {
+            method: 'delete',
+            url: url,
+            headers: { }
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(res.status(200).json(response.data));
+          })
+          .catch(function (error) {
+            res.status(500).send("Something went wrong")
+          });
     }
     else {
         // 404
