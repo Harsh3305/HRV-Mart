@@ -37,7 +37,7 @@ function decrementProductQuantity (productId, productQuantity, setProductQuantit
         setProductQuantity(productQuantity-1)
     }
     else if (productQuantity > 1) {
-        syncWithBackend(productId, productQuantity+1)
+        syncWithBackend(productId, productQuantity-1)
         setProductQuantity(productQuantity-1)
     }
 }
