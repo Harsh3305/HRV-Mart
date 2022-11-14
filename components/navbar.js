@@ -7,22 +7,23 @@ export default function NavBar() {
     const { data: session } = useSession();
     return <div className={styles.navbar}>
         <div className={styles.left}>
-            {
-                session ? (
-                    <div>
-                        Hi! {session.user.name}
-                    </div>
-                ) : (
-                    <div></div>
-                )
-            }
-        </div>
-        <div className={styles.center}>
             <Link href="/">
                 <a>HRV-Mart</a>
             </Link>
         </div>
+        <div className={styles.center}>
+            <input
+                placeholder="Search Products..."
+                className={styles.searchBar}
+            />
+        </div>
         <div className={styles.right}>
+            <button
+                className={styles.cart}
+                onClick={() => Router.push("/cart")}
+            >
+                Cart
+            </button>
             {
                 session ? (
                     <button onClick={() => signOut()}>
@@ -31,7 +32,7 @@ export default function NavBar() {
                 ) : (
                     <button onClick={() => Router.push("/login")}>
                         <a>Login In</a>
-                    </button>  
+                    </button>
                 )
             }
         </div>
