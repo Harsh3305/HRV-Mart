@@ -7,7 +7,7 @@ export default function ProductOverview({ product }) {
         <div className={styles.title}>
             {product.title}
         </div>
-        <div className={styles.image}>
+        <div className={styles.image[0]}>
             <Image  src={product.image} height={400} width={400}/>
         </div>
         <div className={styles.price}>
