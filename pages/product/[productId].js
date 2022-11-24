@@ -14,7 +14,7 @@ export default function Product({ product }) {
         </div>
         <div className={styles.product}>
             <div className={styles.image}>
-                <Image src={product.image} height={400} width={400} />
+                <Image src={product.image[0]} height={400} width={400} />
             </div>
 
             <div className={styles.details}>
