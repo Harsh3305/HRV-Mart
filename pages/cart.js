@@ -17,7 +17,7 @@ export default function Cart({ cart }) {
                                     price={product.product.price}
                                     quantity={product.quantity}
                                     link={`/product/${product.productId}`}
-                                    image={product.product.image}
+                                    image={product.product.image[0]}
                             />)
                         )
                     }
