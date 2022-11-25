@@ -24,6 +24,7 @@ export async function getServerSideProps({ req, res }) {
             },
         })
         var orders = await result.json()
+        orders = orders["data"]
         return {
             props: {
                 orders: orders
