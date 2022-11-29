@@ -4,7 +4,6 @@ export default async function handler(req, res) {
 
         const query = req.query["query"]
         const path = `${process.env.BACKEND_URL}/products/search?query=${query}`
-        console.log(path)
         fetch(path)
             .then(result => result.json())
             .then(json => res.status(200).json(json))
