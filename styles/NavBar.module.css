@@ -30,6 +30,7 @@
 }
 .right button {
     background: white;
+    color: black;
     border: none;
     border-radius: 20px;
     font-size: x-large;
