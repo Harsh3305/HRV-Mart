@@ -1,26 +1,45 @@
-import { getSession } from "next-auth/react"
+// import { getSession } from "next-auth/react"
+import { getCookie } from "cookies-next";
 var axios = require('axios');
 
 export default async function handler(req, res) {
 
-    const session = await getSession({ req });
-    const email = session.user.email;
+    const token = getCookie("access-token", {
+        req: req,
+        res: res
+    });
+
+    // const session = await getSession({ req });
+    // const email = session.user.email;
+
     if (req.method == "GET") {
         // get cart of user
-        fetch(`${process.env.BACKEND_URL}/cart/${email}`)
+        fetch(`${process.env.BACKEND_URL}/cart`, {
+            headers: {
+                "Authentication": `bearer:${token}`
+            }
+        })
             .then(res => res.json())
             .then(
                 json => {
-                    fetch(`${process.env.BACKEND_URL}/cart/cost/${email}`)
-                    .then(costRes => costRes.json())
-                    .then(cost => {
-                        json.cost = cost;
-                        res.status(200).json(json)
+                    fetch(`${process.env.BACKEND_URL}/cart/cost`, {
+
+                        headers: {
+                            "Authentication": `bearer:${token}`
+                        }
                     })
-                    .catch(costError => res.status(500).json(costError))
+                        .then(costRes => costRes.json())
+                        .then(cost => {
+                            json.cost = cost;
+                            res.status(200).json(json)
+                        })
+                        .catch(costError => res.status(500).json(costError))
                 }
             )
-            .catch(error => res.status(500).json(error))
+            .catch((error) => {
+                console.log(error)
+                res.status(500).json(error);
+            })
     }
     else if (req.method == "PUT") {
         // update quantity of product in cart
@@ -32,9 +51,10 @@ export default async function handler(req, res) {
 
         var config = {
             method: 'put',
-            url: `${process.env.BACKEND_URL}/cart/${email}`,
+            url: `${process.env.BACKEND_URL}/cart/product`,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authentication": `bearer:${token}`
             },
             data: data
         };
@@ -50,7 +70,6 @@ export default async function handler(req, res) {
     }
     else if (req.method == "POST") {
         var data = JSON.stringify({
-            "user_id": email,
             "products": req.body.products
         });
 
@@ -58,7 +77,8 @@ export default async function handler(req, res) {
             method: 'put',
             url: `${process.env.BACKEND_URL}/cart`,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authentication": `bearer:${token}`
             },
             data: data
         };
@@ -74,29 +94,35 @@ export default async function handler(req, res) {
     }
     else if (req.method == "DELETE") {
         // empty whole cart of user
-        const {productId} = req.query
-        var url=""
+        const { productId } = req.query
+        var url = ""
         if (productId == null) {
             // empty whole cart of user
-            url = `${process.env.BACKEND_URL}/cart/${email}` 
+            url = `${process.env.BACKEND_URL}/cart`
         }
         else {
             // remove product from cart
-            url = `${process.env.BACKEND_URL}/cart/${email}?productId=${productId}` 
+            /*
+            *   TODO: 
+            */
+            url = `${process.env.BACKEND_URL}/cart?productId=${productId}`
         }
         var config = {
             method: 'delete',
             url: url,
-            headers: { }
-          };
-          
-          axios(config)
-          .then(function (response) {
-            console.log(res.status(200).json(response.data));
-          })
-          .catch(function (error) {
-            res.status(500).json(error)
-          });
+            headers: {
+                "Authentication": `bearer:${token}`
+            }
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(res.status(200).json(response.data));
+            })
+            .catch(function (error) {
+                console.log(error)
+                res.status(500).json(error)
+            });
     }
     else {
         // 404

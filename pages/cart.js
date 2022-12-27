@@ -3,14 +3,15 @@ import ProductDetail from "../components/product_detail";
 import styles from "../styles/Cart.module.css";
 
 export default function Cart({ cart }) {
+    console.log({ cart: cart });
     return <div className={styles.main}>
         {
-            cart  && cart.products && cart.products.length  && cart.products.length  != 0? (
+            cart && cart.products && cart.products.length && cart.products.length != 0 ? (
                 <div className={styles.notEmpty}>
                     {
                         cart.products.map(
                             product => (
-                                <ProductDetail 
+                                <ProductDetail
                                     productId={product.productId}
                                     key={product.productId}
                                     name={product.product.title}
@@ -18,7 +19,7 @@ export default function Cart({ cart }) {
                                     quantity={product.quantity}
                                     link={`/product/${product.productId}`}
                                     image={product.product.image[0]}
-                            />)
+                                />)
                         )
                     }
                     <div className={styles.cost}>
@@ -27,7 +28,7 @@ export default function Cart({ cart }) {
                             Total cost: ₹ {cart.cost}
                         </div>
                     </div>
-                    <button className={styles.order} onClick={()=> purchaseAllProductInCart()}>
+                    <button className={styles.order} onClick={() => purchaseAllProductInCart()}>
                         Order now
                     </button>
                 </div>
@@ -37,8 +38,7 @@ export default function Cart({ cart }) {
         }
     </div>
 }
-async function purchaseAllProductInCart () {
-    var data = JSON.stringify({});
+async function purchaseAllProductInCart() {
 
     const response = (await fetch(`/api/order`, {
         method: 'POST',
@@ -46,7 +46,7 @@ async function purchaseAllProductInCart () {
             'Content-Type': 'application/json'
         },
         mode: 'cors',
-        body: data
+        body: ""
     })).json()
 
     const x = await response;
@@ -56,7 +56,7 @@ export async function getServerSideProps({ req, res }) {
     try {
         const result = await fetch(`${process.env.URL}/api/cart`, {
             headers: {
-                cookie: req.headers.cookie || "",
+                cookie: req.headers.cookie,
             },
         })
         var cart = await result.json()
@@ -64,7 +64,6 @@ export async function getServerSideProps({ req, res }) {
             const productId = cart.products[productQuantity].productId
             const product = await fetch(`${process.env.URL}/api/product/${productId}`)
             cart.products[productQuantity].product = await product.json()
-            
         }
         return {
             props: {
