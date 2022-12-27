@@ -2,7 +2,8 @@ import styles from "../styles/NavBar.module.css";
 import Link from 'next/link'
 import Router from "next/router";
 import { useState } from "react";
-import { getCookie, getCookies } from 'cookies-next';
+import { getCookie, removeCookies } from 'cookies-next';
+import { toast } from "react-toastify";
 
 export default function NavBar() {
     const [searchTest, setSearchTest] = useState("")
@@ -58,8 +59,25 @@ function login(token) {
         </button>
     }
     else {
-        return <button onClick={() => { }}>
+        return <button onClick={() => {
+            signout()
+        }}>
             Sign Out
         </button>
     }
+}
+async function signout() {
+    fetch(`/api/signout`)
+        .then((a) => {
+            removeCookies("f-access-token");
+            toast(
+                "Signout Successfully",
+                {
+                    type: toast.TYPE.INFO,
+                    autoClose: 2000
+                }
+            );
+            Router.reload();
+        })
+        .catch()
 }
