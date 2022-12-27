@@ -1,12 +1,12 @@
 import styles from "../styles/NavBar.module.css";
 import Link from 'next/link'
-import { useSession, signIn, signOut } from "next-auth/react"
 import Router from "next/router";
 import { useState } from "react";
+import { getCookie, getCookies } from 'cookies-next';
 
 export default function NavBar() {
-    const { data: session } = useSession();
     const [searchTest, setSearchTest] = useState("")
+    const token = getCookie("f-access-token");
 
     const handleKeyDown = event => {
 
@@ -47,17 +47,19 @@ export default function NavBar() {
             >
                 Cart
             </button>
-            {
-                session ? (
-                    <button onClick={() => signOut()}>
-                        <a>Sign Out</a>
-                    </button>
-                ) : (
-                    <button onClick={() => Router.push("/login")}>
-                        <a>Login In</a>
-                    </button>
-                )
-            }
+            {login(token)}
         </div>
     </div>
+}
+function login(token) {
+    if (token == null) {
+        return <button onClick={() => Router.push("/login")}>
+            Login In
+        </button>
+    }
+    else {
+        return <button onClick={() => { }}>
+            Sign Out
+        </button>
+    }
 }

@@ -1,21 +1,26 @@
 import { useState } from "react";
-import styles from "../styles/Login.module.css";
-import { toast } from "react-toastify";
+import styles from "../styles/SignUp.module.css";
 import Router from "next/router";
-import { setCookie } from 'cookies-next';
+import { toast } from "react-toastify";
 
-
-export default function Login() {
+export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
     const [status, setStatus] = useState("");
 
     return (<div className={styles.main}>
         <div className={styles.card}>
             <div className={styles.title}>
-                Login
+                Sign Up
             </div>
             <div className={styles.form}>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(event) => { setName(event.target.value) }}
+                />
                 <input
                     type="email"
                     placeholder="Email Id"
@@ -60,11 +65,12 @@ export default function Login() {
     async function login() {
         setStatus("...");
         var data = JSON.stringify({
+            name: name,
             email: email,
             password: password
         });
 
-        const response = (await fetch(`/api/login`, {
+        const response = (await fetch(`/api/signUp`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,23 +81,27 @@ export default function Login() {
         console.log(response)
         if (response.status != 200) {
             setStatus(await response.text());
-            toast("User Not found", {
+            toast("Account already exist", {
                 autoClose: 3000,
                 draggable: true,
-                type: 'error'
+                type: toast.TYPE.ERROR
             })
+            
         }
         else {
-            setCookie('f-access-token', await response.text(), {
-                maxAge: 60*10
-            })
             setStatus("");
-            toast("Login successfully", {
+            toast("Account created successfully", {
                 autoClose: 3000,
                 draggable: true,
                 type: 'success'
-            })
-            Router.push("/")
+            });
+            toast("Please login", {
+                autoClose: 3000,
+                draggable: true,
+                type: toast.TYPE.INFO
+            });
+            
+            Router.push("/login")
         }
     }
 }
