@@ -31,7 +31,7 @@ export default async function login(req, res) {
                 maxAge: 60 * 10,
             });
 
-            res.status(200).send(jwt);
+            res.status(200).send("Login successfully");
         })
         .catch(function (error) {
             console.log(error)

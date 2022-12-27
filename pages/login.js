@@ -82,8 +82,8 @@ export default function Login() {
             })
         }
         else {
-            setCookie('f-access-token', await response.text(), {
-                maxAge: 60*10
+            setCookie('f-access-token', "OK", {
+                maxAge: 60 * 10
             })
             setStatus("");
             toast("Login successfully", {
