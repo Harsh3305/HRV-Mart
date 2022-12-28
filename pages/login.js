@@ -40,7 +40,7 @@ export default function Login() {
             </div>
             {getErrorMessage()}
             <div>
-                Don't have an account {" "}
+                Don&apos;t have an account {" "}
                 <Link href="/signUp">
                     <a>
                         Sign Up
