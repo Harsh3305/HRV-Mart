@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         res: res
     });
 
-    fetch(`${process.env.BACKEND_URL}/user`, {
+    fetch(`${process.env.BACKEND_URL}`, {
         headers: {
             "Authentication": `bearer:${token}`
         }
