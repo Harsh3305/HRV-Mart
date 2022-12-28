@@ -3,6 +3,7 @@ import styles from "../styles/Login.module.css";
 import { toast } from "react-toastify";
 import Router from "next/router";
 import { setCookie } from 'cookies-next';
+import Link from "next/link";
 
 
 export default function Login() {
@@ -38,6 +39,14 @@ export default function Login() {
                 </button>
             </div>
             {getErrorMessage()}
+            <div>
+                Don&apos;t have an account {" "}
+                <Link href="/signUp">
+                    <a>
+                        Sign Up
+                    </a>
+                </Link>
+            </div>
         </div>
     </div>)
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/SignUp.module.css";
 import Router from "next/router";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -43,6 +44,14 @@ export default function SignUp() {
                 </button>
             </div>
             {getErrorMessage()}
+            <div>
+                Already have an account {" "}
+                <Link href="/login">
+                    <a>
+                        Login
+                    </a>
+                </Link>
+            </div>
         </div>
     </div>)
 

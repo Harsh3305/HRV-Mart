@@ -4,6 +4,7 @@ import Router from "next/router";
 import { useState } from "react";
 import { getCookie, removeCookies } from 'cookies-next';
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 export default function NavBar() {
     const [searchTest, setSearchTest] = useState("")
@@ -42,12 +43,6 @@ export default function NavBar() {
             />
         </div>
         <div className={styles.right}>
-            <button
-                className={styles.cart}
-                onClick={() => Router.push("/cart")}
-            >
-                Cart
-            </button>
             {login(token)}
         </div>
     </div>
@@ -59,11 +54,26 @@ function login(token) {
         </button>
     }
     else {
-        return <button onClick={() => {
-            signout()
-        }}>
-            Sign Out
-        </button>
+        return <div className={styles.rightL}>
+            <Link href="/profile">
+            <a>
+            <Image className={styles.profile} src="/profile.svg" width={50} height={50}/>
+            </a>
+            </Link>
+            <button
+                className={styles.cart}
+                onClick={() => Router.push("/cart")}
+            >
+                Cart
+            </button>
+
+            <button onClick={() => {
+                signout()
+            }}>
+                Sign Out
+            </button>
+        </div>
+
     }
 }
 async function signout() {
