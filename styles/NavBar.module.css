@@ -28,6 +28,16 @@
     align-items: center;
     justify-content: right;
 }
+.rightL {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.profile {
+    cursor: pointer;
+}
 .right button {
     background: white;
     color: black;
@@ -35,6 +45,7 @@
     border-radius: 20px;
     font-size: x-large;
     padding: 5px;
+    cursor: pointer;
 }
 .searchBar {
     width: 100%;

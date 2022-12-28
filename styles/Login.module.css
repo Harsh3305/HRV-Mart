@@ -24,9 +24,10 @@
   font-size: large;
   font-weight: 700;
 }
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.card a {
+  color: red;
+  font-size: x-large;
+  text-decoration: underline;
 }
 
 .title a:hover,
@@ -68,20 +69,20 @@
   justify-content: space-evenly;
 
   text-decoration: none;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  /* transition: color 0.15s ease, 0.15s ease; */
 
   background: rgba(0,0,0, 0.1);
   backdrop-filter: saturate(180%) blur(10px);
 }
 
-.card:hover,
+/* .card:hover,
 .card:focus,
 .card:active {
   color: #0070f3;
   border-color: #0070f3;
-}
+} */
 
 .card h2 {
   margin: 0 0 1rem 0;
