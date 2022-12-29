@@ -2,12 +2,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../styles/Product.module.css";
 import React, { useState } from 'react';
+import { getCookie } from "cookies-next";
 
 
 export default function Product({ product }) {
     const router = useRouter()
     const [cart, setCart] = React.useState(0);
     const { productId } = router.query;
+    const token = getCookie("f-access-token");
     return <div className={styles.main}>
         <div className={styles.title}>
             {product.title}
@@ -24,8 +26,8 @@ export default function Product({ product }) {
                 <p className={styles.description}>
                     {product.description}
                 </p>
-                {
-                    cart == 0 ?
+                {token ?
+                    (cart == 0 ?
                         (<button className={styles.cart} onClick={() => incrementCart(productId, cart, setCart)}>
                             Add to Cart
                         </button>) :
@@ -40,7 +42,9 @@ export default function Product({ product }) {
                                 </button>
                             </div>
                         )
-
+                    ) : (
+                        <div></div>
+                    )
                 }
 
             </div>
@@ -48,7 +52,7 @@ export default function Product({ product }) {
         </div>
     </div>
     function incrementCart(productId, cart, setCart) {
-        syncWithBackend(productId, cart+1)
+        syncWithBackend(productId, cart + 1)
         setCart(cart + 1)
     }
     function decrementCart(productId, cart, setCart) {
@@ -57,19 +61,19 @@ export default function Product({ product }) {
             setCart(cart - 1)
         }
         else if (cart > 1) {
-            syncWithBackend(productId, cart-1)
+            syncWithBackend(productId, cart - 1)
             setCart(cart - 1)
         }
     }
-    async function deleteProductFromCart (productId) {
+    async function deleteProductFromCart(productId) {
         const response = (await fetch(`/api/cart?productId=${productId}`, {
             method: 'DELETE',
         }))
 
-        console.log({response: response})
+        console.log({ response: response })
         // const x = await response;
     }
-    async function  syncWithBackend(productId, cart) {
+    async function syncWithBackend(productId, cart) {
         var data = JSON.stringify({
             "productId": productId,
             "quantity": cart
