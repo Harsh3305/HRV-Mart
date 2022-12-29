@@ -7,13 +7,14 @@
     align-items: center;
     /* justify-content: space-around; */
     min-height: 100vh;
+    
 }
 .title {
     font-size: xx-large;
     margin-bottom: 40px;
 }
 .product {
-    width: 100vw;
+    /* width: 100vw; */
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
