@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getCookie, removeCookies } from 'cookies-next';
 import { toast } from "react-toastify";
 import Image from "next/image";
+import { BsCart2,  } from 'react-icons/bs';
 
 export default function NavBar() {
     const [searchTest, setSearchTest] = useState("")
@@ -56,15 +57,16 @@ function login(token) {
     else {
         return <div className={styles.rightL}>
             <Link href="/profile">
-            <a>
-            <Image className={styles.profile} src="/profile.svg" width={50} height={50}/>
-            </a>
+                <a>
+                    <Image className={styles.profile} src="/profile.svg" width={50} height={50} />
+                </a>
             </Link>
             <button
                 className={styles.cart}
                 onClick={() => Router.push("/cart")}
             >
-                Cart
+                <BsCart2 />
+                {" "}Cart
             </button>
 
             <button onClick={() => {

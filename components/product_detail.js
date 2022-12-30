@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/ProductDetails.module.css"
 import Router from "next/router";
 import React from 'react';
+import { BsTrash  } from 'react-icons/bs';
 
 export default function ProductDetail({ productId, name, price, quantity, link, image }) {
     const [productQuantity, setProductQuantity] = React.useState(quantity);
@@ -24,6 +25,11 @@ export default function ProductDetail({ productId, name, price, quantity, link, 
                 Quantity:{productQuantity}
                 <button className={styles.decrease} onClick={() => { decrementProductQuantity(productId, productQuantity, setProductQuantity)}}>-</button>
             </div>
+            <button className={styles.delete} onClick={() => {
+                
+            }}>
+                <BsTrash/>
+            </button>
         </div>
     </div>
 }
