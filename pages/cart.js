@@ -3,11 +3,27 @@ import ProductDetail from "../components/product_detail";
 import styles from "../styles/Cart.module.css";
 
 export default function Cart({ cart }) {
-    console.log({ cart: cart });
     return <div className={styles.main}>
         {
             cart && cart.products && cart.products.length && cart.products.length != 0 ? (
                 <div className={styles.notEmpty}>
+                    <div className={styles.description}>
+                        <div className={styles.image}>
+                            Image
+                        </div>
+                        <div className={styles.productName}>
+                            Name of Product
+                        </div>
+                        <div className={styles.price}>
+                            Price
+                        </div>
+                        <div className={styles.quantity}>
+                            Quantity
+                        </div>
+                        <div className={styles.delete}>
+                            Remove Product
+                        </div>
+                    </div>
                     {
                         cart.products.map(
                             product => (
