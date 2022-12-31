@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Product.module.css";
 import React, { useState } from 'react';
 import { getCookie } from "cookies-next";
-
+import { FaHeart } from "react-icons/fa";
 
 export default function Product({ product }) {
     const router = useRouter()
@@ -27,21 +27,30 @@ export default function Product({ product }) {
                     {product.description}
                 </p>
                 {token ?
-                    (cart == 0 ?
-                        (<button className={styles.cart} onClick={() => incrementCart(productId, cart, setCart)}>
-                            Add to Cart
-                        </button>) :
-                        (
-                            <div className={styles.cart}>
-                                <button className={styles.changeButton} onClick={() => decrementCart(productId, cart, setCart)}>
-                                    -
-                                </button>
-                                <div>{cart}</div>
-                                <button className={styles.changeButton} onClick={() => incrementCart(productId, cart, setCart)}>
-                                    +
-                                </button>
-                            </div>
-                        )
+                    (<div className={styles.holder}>
+                        <div className={styles.likeHolder}>
+                            <FaHeart />
+                        </div>
+
+                        <div className={styles.cartHolder}>
+                            {cart == 0 ?
+                                (<button className={styles.cart} onClick={() => incrementCart(productId, cart, setCart)}>
+                                    Add to Cart
+                                </button>) :
+                                (
+                                    <div className={styles.cart}>
+                                        <button className={styles.changeButton} onClick={() => decrementCart(productId, cart, setCart)}>
+                                            -
+                                        </button>
+                                        <div>{cart}</div>
+                                        <button className={styles.changeButton} onClick={() => incrementCart(productId, cart, setCart)}>
+                                            +
+                                        </button>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
                     ) : (
                         <div></div>
                     )
