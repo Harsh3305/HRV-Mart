@@ -7,12 +7,14 @@
     align-items: center;
     /* justify-content: space-around; */
     min-height: 100vh;
-    
+
 }
+
 .title {
     font-size: xx-large;
     margin-bottom: 40px;
 }
+
 .product {
     /* width: 100vw; */
     /* background-color: aqua; */
@@ -21,18 +23,22 @@
     align-items: center;
     justify-content: space-between;
 }
-.image{
+
+.image {
     padding: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .price {
     color: red;
     font-size: x-large;
     font-weight: 500;
 }
+
 .description {
     font-size: large;
 }
+
 .details {
     padding: 20px;
     padding: 20px;
@@ -41,6 +47,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .cart {
     background: none;
     font-size: larger;
@@ -50,6 +57,7 @@
     flex-direction: row;
     align-items: center;
 }
+
 .changeButton {
     background: none;
     border-radius: 20px;
@@ -57,8 +65,68 @@
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.holder {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    padding: 10px;
+    align-items: center;
+}
+
+.cartHolder {
+    flex: 1;
+}
+
+.likeHolder {
+    flex: 3;
+    font-size: xx-large;
+    color: grey;
+    width: max-content;
+    height: max-content;
+}
+
+.liked {
+    flex: 3;
+    font-size: xx-large;
+    color: red;
+    width: max-content;
+    height: max-content;
+}
+
+.likeHolder :hover {
+    color: grey;
+    animation: colorAnimation 5s infinite;
+}
+
+.heart:hover {
+    animation: colorAnimation 1s infinite;
+}
+
+@keyframes colorAnimation {
+    0% {
+        scale: 1.01;
+    }
+
+    25% {
+        scale: 1.02;
+    }
+
+    50% {
+        scale: 1.03;
+    }
+
+    75% {
+        scale: 1.02;
+    }
+
+    100% {
+        scale: 1.01;
+    }
+}
+
 .changeButton:active {
     background-color: #0070f3;
 }

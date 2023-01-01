@@ -5,7 +5,8 @@ import { useState } from "react";
 import { getCookie, removeCookies } from 'cookies-next';
 import { toast } from "react-toastify";
 import Image from "next/image";
-import { BsCart2,  } from 'react-icons/bs';
+import { BsCart2 } from 'react-icons/bs';
+import { ImUser } from 'react-icons/im';
 
 export default function NavBar() {
     const [searchTest, setSearchTest] = useState("")
@@ -50,15 +51,16 @@ export default function NavBar() {
 }
 function login(token) {
     if (token == null) {
-        return <button onClick={() => Router.push("/login")}>
+        return (<button onClick={() => Router.push("/login")}>
             Login In
-        </button>
+        </button>)
     }
     else {
-        return <div className={styles.rightL}>
+        return (<div className={styles.rightL}>
             <Link href="/profile">
                 <a>
-                    <Image className={styles.profile} src="/profile.svg" width={50} height={50} />
+                    {/* <Image className={styles.profile} src="/profile.svg" width={20} height={30} /> */}
+                    <ImUser className={styles.profile} />
                 </a>
             </Link>
             <button
@@ -75,7 +77,7 @@ function login(token) {
                 Sign Out
             </button>
         </div>
-
+        );
     }
 }
 async function signout() {
