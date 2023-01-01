@@ -88,30 +88,42 @@
     height: max-content;
 }
 
-.likeHolder :hover {
+.liked {
+    flex: 3;
+    font-size: xx-large;
     color: red;
+    width: max-content;
+    height: max-content;
+}
+
+.likeHolder :hover {
+    color: grey;
     animation: colorAnimation 5s infinite;
+}
+
+.heart:hover {
+    animation: colorAnimation 1s infinite;
 }
 
 @keyframes colorAnimation {
     0% {
-        color: rgb(230, 147, 147);
+        scale: 1.01;
     }
 
     25% {
-        color: red;
+        scale: 1.02;
     }
 
     50% {
-        color: rgb(230, 147, 147);
+        scale: 1.03;
     }
 
     75% {
-        color: red;
+        scale: 1.02;
     }
 
     100% {
-        color: rgb(230, 147, 147);
+        scale: 1.01;
     }
 }
 
