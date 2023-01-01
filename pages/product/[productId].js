@@ -4,12 +4,14 @@ import styles from "../../styles/Product.module.css";
 import React, { useState } from 'react';
 import { getCookie } from "cookies-next";
 import { FaHeart } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 export default function Product({ product }) {
     const router = useRouter()
     const [cart, setCart] = React.useState(0);
     const { productId } = router.query;
     const token = getCookie("f-access-token");
+    const [isLikes, setIsLiked] = React.useState(false);
     return <div className={styles.main}>
         <div className={styles.title}>
             {product.title}
@@ -28,8 +30,29 @@ export default function Product({ product }) {
                 </p>
                 {token ?
                     (<div className={styles.holder}>
-                        <div className={styles.likeHolder}>
-                            <FaHeart />
+                        <div
+                            className={isLikes ? styles.liked : styles.likeHolder}
+                            onClick={() => {
+                                if (isLikes) {
+                                    toast("Product removed from Like", {
+                                        autoClose: true,
+                                        closeOnClick: true,
+                                        theme: "dark",
+                                        icon: FaHeart
+                                    });
+                                }
+                                else {
+                                    toast("Product added in Like", {
+                                        autoClose: true,
+                                        closeOnClick: true,
+                                        theme: "light",
+                                        icon: FaHeart
+                                    });
+                                }
+                                setIsLiked(!isLikes);
+                            }}
+                        >
+                            <FaHeart className={styles.heart} />
                         </div>
 
                         <div className={styles.cartHolder}>
