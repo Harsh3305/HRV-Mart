@@ -2,7 +2,7 @@ import ProductOverview from "./product_overview";
 import styles from "../styles/ProductSection.module.css";
 
 export default function ProductSection ({title, products}) {
-    return <div>
+    return <div className={styles.main}>
     <div className={styles.title}>
       {title}
     </div>

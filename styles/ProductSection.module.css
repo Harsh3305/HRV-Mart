@@ -1,3 +1,8 @@
+.main {
+    display: flex;
+    background-color: green;
+    width: 100%;
+}
 .title {
     margin-top: 20px;
     font-size: xx-large;
@@ -9,11 +14,9 @@
 
     border-radius: 20px;
 }
-.products{
+.products {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
-
 }
