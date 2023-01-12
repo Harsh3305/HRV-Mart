@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      "fakestoreapi.com", 
+      "fakestoreapi.com", ,
+      "api.lorem.space",
       "lh3.googleusercontent.com"
   ]
   }
