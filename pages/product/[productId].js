@@ -102,7 +102,7 @@ export default function Product({ product }) {
             method: 'DELETE',
         }))
 
-        console.log({ response: response })
+        // console.log({ response: response })
         // const x = await response;
     }
     async function syncWithBackend(productId, cart) {
