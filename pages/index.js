@@ -18,7 +18,9 @@ export default function Home({ categories, products }) {
 
 export async function getStaticProps() {
   const categories = (await apiCall(`${process.env.URL}/api/categories`)).categories;
+  console.log(categories);
   const products = (await apiCall(`${process.env.URL}/api`))
+  console.log(products)
   return {
     props: {
       categories,
@@ -33,6 +35,10 @@ async function apiCall(path) {
     return result;
   }
   catch (error) {
+    console.log({
+      path: path,
+      error: error
+    })
     return [];
   }
 

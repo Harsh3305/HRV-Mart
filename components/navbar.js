@@ -16,7 +16,7 @@ export default function NavBar() {
 
         if (event.key === 'Enter') {
 
-            console.log(searchTest);
+            // console.log(searchTest);
             Router.push(`/search/${searchTest}`)
         }
     };
@@ -32,7 +32,7 @@ export default function NavBar() {
                 placeholder="Search Products..."
                 className={styles.searchBar}
                 onChange={(event) => {
-                    console.log(event.target.value)
+                    // console.log(event.target.value)
                     setSearchTest(event.target.value)
                     if (event.target.value.length >= 3) {
                         Router.push(`/search/${event.target.value}`)
