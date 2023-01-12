@@ -3,12 +3,18 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+    domains: [
+      "fakestoreapi.com",
+      'api.escuelajs.co',
+      'api.lorem.space',
+      'educacion30.b-cdn.net',
+      'empresas.blogthinkbig.com',
+      'imgs.search.brave.com',
+      'mobimg.b-cdn.net',
+      'placeimg.com',
+      'unsplash.com'
+    ]
+
   }
 }
 

@@ -110,6 +110,11 @@
     filter: invert(1);
   }
 }
-.loadButton{
-  
+
+.loadButton {
+  font-size: xx-large;
+  border-radius: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }

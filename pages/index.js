@@ -6,6 +6,8 @@ import styles from "../styles/Home.module.css"
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [nextIndex, setNextIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   const pageSize = 10;
   async function getProducts() {
     if (nextIndex == null || nextIndex == "null") {
@@ -26,7 +28,7 @@ export default function Home() {
       <ProductSection products={products} />
       <button className={styles.loadButton} onClick={() => {
         getProducts()
-      }}>Load More product</button>
+      }}>Load More product ⏳</button>
     </div>
   )
 
