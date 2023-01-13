@@ -14,7 +14,8 @@ export default function Home() {
       setProducts(products)
     }
     else {
-      const data = await apiCall(`/api?index=${nextIndex}&pageSize=${pageSize}`);
+      const path = `${process.env.URL}/api?index=${nextIndex}&pageSize=${pageSize}`
+      const data = await apiCall(path);
       setNextIndex(data.nextIndex)
       const newProduct = products.concat(data.data)
       setProducts(newProduct)
