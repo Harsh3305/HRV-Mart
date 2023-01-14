@@ -5,9 +5,16 @@ const nextConfig = {
   images: {
     domains: [
       "fakestoreapi.com",
-      "api.lorem.space",
-      "lh3.googleusercontent.com"
-  ]
+      'api.escuelajs.co',
+      'api.lorem.space',
+      'educacion30.b-cdn.net',
+      'empresas.blogthinkbig.com',
+      'imgs.search.brave.com',
+      'mobimg.b-cdn.net',
+      'placeimg.com',
+      'unsplash.com'
+    ]
+
   }
 }
 

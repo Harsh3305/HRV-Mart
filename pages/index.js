@@ -1,32 +1,45 @@
+import { useState } from "react";
 import Categories from "../components/categories"
 import ProductSection from "../components/product_section";
 import styles from "../styles/Home.module.css"
 
-export default function Home({ categories, products }) {
+export default function Home() {
+  const [products, setProducts] = useState([]);
+  const [nextIndex, setNextIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const pageSize = 10;
+  async function getProducts() {
+    if (nextIndex == null || nextIndex == "null") {
+      setProducts(products)
+    }
+    else {
+      const host = process.env.URL;
+      var path = ""
+      if (host == undefined) {
+        path = `/api?index=${nextIndex}&pageSize=${pageSize}`
+      }
+      else {
+        path = `${host}/api?index=${nextIndex}&pageSize=${pageSize}`
+      }
+      const data = await apiCall(path);
+      setNextIndex(data.nextIndex)
+      const newProduct = products.concat(data.data)
+      setProducts(newProduct)
+    }
+  }
+  if (nextIndex == 0) {
+    getProducts()
+  }
   return (
     <div className={styles.main}>
-      {/*
-      * There is a bug in Categories. It is adding a scrollbar in home page.
-      */}
-      {Categories(categories)}
-      <ProductSection title={"Recommended for You"} products={products} />
-      {/* <ProductSection title={"Trending"} products={products}/>
-      <ProductSection title={"Based on your Search History"} products={products}/> */}
+      <ProductSection products={products} />
+      <button className={styles.loadButton} onClick={() => {
+        getProducts()
+      }}>Load More product ⏳</button>
     </div>
   )
-}
 
-export async function getStaticProps() {
-  const categories = (await apiCall(`${process.env.URL}/api/categories`)).categories;
-  console.log(categories);
-  const products = (await apiCall(`${process.env.URL}/api`))
-  console.log(products)
-  return {
-    props: {
-      categories,
-      products
-    },
-  }
 }
 async function apiCall(path) {
   const res = await fetch(path)
@@ -41,5 +54,4 @@ async function apiCall(path) {
     })
     return [];
   }
-
 }
