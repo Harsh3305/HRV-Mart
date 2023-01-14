@@ -10,6 +10,9 @@ export default function Home() {
 
   const pageSize = 10;
   async function getProducts() {
+    if (loading == true) {
+      return;
+    }
     if (nextIndex == null || nextIndex == "null") {
       setProducts(products)
     }
@@ -22,8 +25,10 @@ export default function Home() {
       else {
         path = `${host}/api?index=${nextIndex}&pageSize=${pageSize}`
       }
+      setLoading(true);
       const data = await apiCall(path);
       setNextIndex(data.nextIndex)
+      setLoading(false)
       const newProduct = products.concat(data.data)
       setProducts(newProduct)
     }
@@ -34,12 +39,21 @@ export default function Home() {
   return (
     <div className={styles.main}>
       <ProductSection products={products} />
-      <button className={styles.loadButton} onClick={() => {
-        getProducts()
-      }}>Load More product ⏳</button>
+      {getLoadingDiv()}
     </div>
   )
-
+  function getLoadingDiv() {
+    if (loading) {
+      return (<div>
+        Loading Products...
+      </div>);
+    }
+    else {
+      return (<button className={styles.loadButton} onClick={() => {
+        getProducts()
+      }}>Load More product ⏳</button>);
+    }
+  }
 }
 async function apiCall(path) {
   const res = await fetch(path)
